@@ -12,7 +12,9 @@ livereload({ start: true });
 gulp.task('config', function() {
 
   gulp.src('app/config.json')
-    .pipe(ngConstant())
+    .pipe(ngConstant({
+      name: 'config'
+    }))
     .pipe(gulp.dest('app'));
 
 });

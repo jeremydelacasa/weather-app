@@ -2,7 +2,7 @@
 
 
 angular.module('weather')
-  .factory('settingsService', function ($http, $q) {
+  .factory('settingsService', function ($http, $q, OPENWEATHERMAP_API_KEY) {
     return{
         search: function(query){
           return $http.get("http://api.openweathermap.org/data/2.5/find?q=" + query + "&type=like&sort=population&cnt=9&units=metric&appid=" + OPENWEATHERMAP_API_KEY);
