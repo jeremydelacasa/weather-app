@@ -1,0 +1,21 @@
+.error-msg {
+  background: red;
+  color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 15px;
+}
+
+.no-data-msg {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 15px;
+  position: fixed;
+  font-size: 20px;
+  font-weight: 300;
+}

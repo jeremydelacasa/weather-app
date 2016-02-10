@@ -1,0 +1,31 @@
+<ul class="widgets" ng-class="loader">
+  <li ng-repeat="widget in widgets.list track by $index" class="widget view fade">
+    <div class="widget-body">
+      <span class="widget-title view fade">{{widget.name}} | {{Math.round(widget.main.temp)}}°C</span>
+      <my-icon ng-if="widget.dt" timestamp="{{widget.dt}}" sunset="{{widget.sys.sunset}}" sunrise="{{widget.sys.sunrise}}" id="{{widget.weather[0].id}}" /></my-icon>
+
+      <ul class="forecast" ng-if="widget.forecast.list">
+        <li class="forecast-item view fade" ng-repeat="forecast in widget.forecast.list" ng-if="$index>0">
+          <i class="forecast-icon wi wi-owm-{{forecast.weather[0].id}}"></i>
+          <span class="forecast-date">{{forecast.dt*1000 | date: 'EEE dd/MM'}}</span>
+          <span class="forecast-temp">{{Math.round(forecast.temp.day)}}°C</span>   
+        </li>
+      </ul>
+
+    </div>
+    <div class="widghet-footer">
+      <span class="widget-timer" my-timer="my-timer" ng-if="widget.dt" timestamp="{{widget.dt}}" longitude="{{widget.coord.lon}}" latitude="{{widget.coord.lat}}" ></span>
+    </div>
+  </li>
+
+  <div class="spinner widgets">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+</ul>
+
+<div ng-show="noData" class="no-data-msg">{{noData}}</div>
+<div ng-show="error" class="error-msg">{{error}}</div>

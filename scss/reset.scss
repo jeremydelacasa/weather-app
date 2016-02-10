@@ -1,0 +1,99 @@
+//Reset
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+ul {
+    list-style-type: none;
+}
+
+// Fucking tard IE does not accept `list-style: none` if `ul` has been hidden
+// in an external stylesheet. Evilsoft always produce WTF bugs, but now, you
+// can't target IE anymore with conditional comments, so welcome back hackzZzZz...
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  list-style-image: url(data:0);
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-size: 1em;
+  font-weight: inherit;
+}
+
+button {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input, select {
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-family: helvetica-neue, sans-serif;
+  vertical-align: middle;
+}
+
+textarea {
+  resize: none;
+  outline: 0;
+}
+
+select {
+  border-radius: 0;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+table {
+  
+}
+

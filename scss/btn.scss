@@ -1,0 +1,86 @@
+.btn {
+  cursor: pointer;
+  transition: all .2s ease;
+  font-size: 16px;
+
+  &.delete {
+    background: #C14242;
+    color: #fff;
+    width: 200px;
+    height: 50px;
+    font-weight: 400;
+    font-family: 'Roboto';
+
+    &:hover {
+      background: #9C0B0B;
+    }
+  
+  }
+
+  &.settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    border: 1px solid;
+    padding: 10px;
+    opacity: 0.7;
+    width: 150px;
+
+    &.actif {
+      color: #131331;
+      border-bottom: 1px solid;
+    }
+
+    &:hover {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+  }
+
+  &.geoloc, &.submit {
+    flex: 0 0 200px;
+    border-left: 1px solid #efefef;
+    font-family: 'Roboto';
+    font-weight: 300;
+    position: relative;
+
+    @include breakpoint(phablet) {
+      flex: 1 0 50%;
+      height: 50px;
+      border-top: 1px solid #efefef;
+    }
+
+
+    &:hover {
+      background: #efefef;
+    }
+
+  }
+
+  &.geoloc {
+    &.loading {
+      background: #efefef;
+      .btn-text {
+        display: none;
+      }
+    }
+    &.disabled {
+      cursor: auto;
+    }
+  }
+
+    &.error {
+    background: #C14242;
+    color: #fff;
+    cursor: auto;
+
+    &:hover {
+      background: #C14242;
+      color: #fff;
+      cursor: auto;
+    }
+  }
+
+}

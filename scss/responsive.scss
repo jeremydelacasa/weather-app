@@ -1,0 +1,27 @@
+/*********************
+BREAKPOINTS
+*********************/
+
+ @mixin breakpoint($point) {
+   @if $point == extralarge-x {
+    @media (min-width: 1501px){ @content ; }
+   }
+   @else if $point == laptop {
+     @media (max-width: 1500px) and (min-width: 1101px){ @content ; }
+  }
+  @else if $point == small-laptop {
+     @media (max-width: 1100px)  and (min-width: 701px) { @content ; }
+  }
+  @else if $point == phablet {
+     @media (max-width: 700px) { @content ; }
+  }
+}
+
+/**
+
+@include breakpoint(breakpointname) {
+     Styles 
+}
+
+**/
+

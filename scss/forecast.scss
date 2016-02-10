@@ -1,0 +1,32 @@
+.forecast {
+  margin-bottom: 20px;
+
+  &-item {
+    font-family: 'Roboto';
+    border-top: 1px solid #434363;
+    padding: 5px 40px;
+    display: flex;
+
+    @include breakpoint(phablet) {
+      padding: 5px 5px;
+    }
+
+    &:first-child {
+      border: none;
+    }
+  }
+
+  &-icon {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+  &-date {
+    flex: 1;
+  }
+
+  &-temp {
+    margin-left: 10px;
+  }
+
+}

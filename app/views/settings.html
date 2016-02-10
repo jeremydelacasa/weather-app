@@ -1,0 +1,52 @@
+<div class="search">
+
+  <form ng-submit="search()" class="search-form">
+
+    <div class="search-body">
+
+      <input class="search-input" type="text" ng-model="query" ng-change="search()" ng-model-options="{ debounce: 400 }" placeholder="Ajouter une ville">
+
+      <div class="spinner input" ng-show="loading">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+      
+    </div>
+  
+    <button class="btn submit" type="submit">Rechercher</button>
+    <button class="btn geoloc" type="button" ng-click="getPosition()" ng-disabled="loadingGeo" ng-class="[loadingGeo, geolocerror]">
+      <span class="btn-text">
+        Géolocaliser 
+      </span>
+      <div class="spinner button">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </button>
+
+  </form>
+
+  <ul class="results" ng-if="results">
+    <li ng-repeat="result in results track by $index" class="result" ng-click="addWidget(result.id, result.name)">
+      Ajouter {{result.name}} / {{result.sys.country}}
+    </li>
+  </ul>
+  
+</div>
+
+
+<ul class="widgets" >
+  <li ng-repeat="widget in widgets track by $index" class="widget view fade">
+    <span class="widget-title">{{widget.name}}</span>
+    <button type="button" class="btn delete" ng-click="removeWidget($index)">Supprimer</button>
+  </li>
+</ul>
+
+<div ng-show="noData" class="no-data-msg">{{noData}}</div>
+<div ng-show="error" class="error-msg">{{error}}</div>
