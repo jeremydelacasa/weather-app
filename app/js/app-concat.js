@@ -153,7 +153,7 @@ angular.module('weather')
 'use strict';
 
 angular.module('weather')
-  .controller('HomeCtrl', function ($scope, localStorageService, homeService, $q, $interval) {
+  .controller('HomeCtrl', function ($scope, localStorageService, homeService, $q, $interval, $timeout) {
    
     var widgetInStore = localStorageService.get('widgets'); //Get localStorageVar
     var widgets = [];
@@ -168,40 +168,40 @@ angular.module('weather')
 
       widgetInStore.map(function(item){ids.push(item.id);});
       
-      var promSearch = homeService.search(ids.toString()).success(function(data){ //load data from Api
+      homeService.search(ids.toString()).success(function(data){ //load data from Api
 
         widgets = data;
+        $scope.widgets = widgets;
 
         widgetInStore.map(function(item, key){ //loop cities
-          
-            homeService.forecast(item.id).success(function(data){ //load data forecast 
 
-              widgets.list[key].forecast = data;
-              $scope.loader = '';
+            $timeout(function(){
 
-            }).error(function(error, status){
+              homeService.forecast(item.id).success(function(data){ //load data forecast 
 
-              $scope.error = 'Erreur de connection';
-              $scope.loader = '';
+                widgets.list[key].forecast = data;
+                $scope.loader = '';
 
-            });
-          
+              }).error(function(error, status){
+
+                $scope.error = 'Erreur de connection';
+                $scope.loader = '';
+
+              });
+
+            }, 200*key);
+        
         });
 
       }).error(function(error, status){
         $scope.error = 'Erreur de connection';
       });
-
-      
-      $q.all([promSearch]).then(function(){ //When data is loading
-
-        $scope.widgets = widgets;
-
-      });
      
     }
 
     $scope.loadData();
+
+
 
     $interval(function(){
       $scope.loadData();      
