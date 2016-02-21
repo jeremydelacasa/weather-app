@@ -251,7 +251,13 @@ angular.module('weather')
                 
                 scope.timer = moment.tz(data.timeZoneId).format('HH:mm');
 
-                $interval(function(){
+                element.on('$destroy', function(){
+
+                  $interval.cancel(interval);
+
+                });
+
+                var interval = $interval(function(){
 
                   scope.timer = moment.tz(data.timeZoneId).format('HH:mm');
 
